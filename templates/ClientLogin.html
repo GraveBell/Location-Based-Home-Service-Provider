@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Client Login</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <div class="container">
+    <div class="form-box">
+      <h2>Client Login</h2>
+
+      <form action="/send-client-otp" method="POST">
+
+        <label>Client Email:</label>
+        <input type="email" name="email" required>
+
+        <label>Client Phone Number:</label>
+        <input type="text" name="phone_num" placeholder="Enter 10-digit phone number" required>
+
+        <button type="submit">Login</button>
+
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>

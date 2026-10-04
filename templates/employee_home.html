@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Employee Dashboard</h1>
+
+    <!-- AVAILABLE REQUESTS -->
+    <h2>Available Requests</h2>
+
+    {% if pending_requests %}
+
+        {% for request in pending_requests %}
+
+            <div class="request-card">
+
+                <p><strong>Request ID:</strong> {{ request[0] }}</p>
+                <p><strong>Service:</strong> {{ request[2] }}</p>
+                <p><strong>Status:</strong> {{ request[5] }}</p>
+
+                <form action="/accept-request/{{ request[0] }}" method="POST">
+                    <button type="submit">Accept Request</button>
+                </form>
+
+            </div>
+
+        {% endfor %}
+
+    {% else %}
+        <p>No nearby requests available.</p>
+    {% endif %}
+
+    <hr>
+
+    <!-- ACCEPTED JOBS -->
+    <h2>Active Jobs</h2>
+
+    {% if accepted_requests %}
+
+        {% for request in accepted_requests %}
+
+            <div class="request-card">
+
+                <p><strong>Request ID:</strong> {{ request[0] }}</p>
+                <p><strong>Service:</strong> {{ request[2] }}</p>
+                <p><strong>Status:</strong> {{ request[5] }}</p>
+
+                <form action="/complete-request/{{ request[0] }}" method="POST">
+                    <button type="submit">Complete Request</button>
+                </form>
+
+                <form action="/close-request/{{ request[0] }}" method="POST">
+                    <button class="secondary" type="submit">Close Request</button>
+                </form>
+
+            </div>
+
+        {% endfor %}
+
+    {% else %}
+        <p>No active jobs.</p>
+    {% endif %}
+
+    <br>
+    <button class="secondary" onclick="window.location.href='/'">Back to Home</button>
+
+</div>
+
+</body>
+</html>

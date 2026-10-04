@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Client Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <div class="form-box">
+        <h1>Client Dashboard</h1>
+
+        <h3>Request a Service</h3>
+
+        <form action="/request-service" method="POST">
+
+            <label>Select Service:</label>
+            <select name="service_name" required>
+                <option value="Plumber">Plumber</option>
+                <option value="Electrician">Electrician</option>
+                <option value="Painter">Painter</option>
+                <option value="Cleaner">Cleaner</option>
+                <option value="Carpenter">Carpenter</option>
+                <option value="Driver">Driver</option>
+            </select>
+
+            <button type="submit">Request Service</button>
+
+        </form>
+
+        <button class="secondary" onclick="window.location.href='/'">Back to Home</button>
+    </div>
+
+</div>
+
+</body>
+</html>
